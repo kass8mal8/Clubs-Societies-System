@@ -7,6 +7,9 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 
 const authRoute = require("./routes/users");
+const membersRoute = require("./routes/members");
+const eventsRoute = require("./routes/events");
+const contributionsRoute = require("./routes/contributions");
 const app = express();
 
 app.use(
@@ -38,5 +41,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
+app.use("/api/members", membersRoute);
+app.use("/api/events", eventsRoute);
+app.use("/api/contributions", contributionsRoute);
 
 module.exports = app;
