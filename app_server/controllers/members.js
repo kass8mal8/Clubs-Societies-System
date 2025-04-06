@@ -23,12 +23,14 @@ const removeMember = async (req, res) => {
 
 const updateMember = async (req, res) => {
 	const { memberId } = req.params;
-	const { updateDetails } = req.body;
+	const { reg_status } = req.body; // Extract reg_status from the request body
 
 	try {
-		await Member.findByIdAndUpdate(memberId, { updateDetails });
+		// Update only the reg_status field
+		await Member.findByIdAndUpdate(memberId, { reg_status });
 		res.status(200).json({ message: "Member updated successfully" });
 	} catch (error) {
+		console.log("Error:", error);
 		res.status(500).json({ message: error.message });
 	}
 };
