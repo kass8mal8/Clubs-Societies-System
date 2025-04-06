@@ -14,7 +14,7 @@ const Switch = ({ isSignup, setIsSignup }) => {
 			onClick={toggleSwitch}
 		>
 			<div
-				className={`absolute bg-gray-800 rounded-full w-[50%] h-full transition-transform duration-300 ${
+				className={`absolute bg-gray-700 rounded-full w-[50%] h-full transition-transform duration-300 ${
 					isSignup ? "transform -translate-x-2" : "transform translate-x-[90%]"
 				}`}
 			></div>

@@ -38,7 +38,7 @@ const Auth = () => {
 			}
 		}
 	};
-	console.log(userDetails);
+	// console.log(userDetails);
 
 	const handleAuth = async (e) => {
 		e.preventDefault();
@@ -77,7 +77,7 @@ const Auth = () => {
 
 	return (
 		<div className="md:flex justify-between items-center h-screen">
-			<div className="w-[100vw] h-[45vh] md:h-auto md:w-2/3 bg-gray-800 md:rounded-tr-4xl md:rounded-br-4xl md:rounded-bl-0 rounded-b-3xl">
+			<div className="w-[100vw] h-[45vh] md:h-auto md:w-2/3 bg-gray-700 md:rounded-tr-4xl md:rounded-br-4xl">
 				<img
 					src={illustration}
 					alt="illustration"
@@ -89,22 +89,23 @@ const Auth = () => {
 				onSubmit={handleAuth}
 			>
 				<Switch setIsSignup={setIsSignup} isSignup={isSignup} />
-				<input
-					type="text"
-					placeholder="Full Name"
-					name="name"
-					onChange={handleInputChange}
-					className="p-3 focus:outline-none border border-neutral-400 rounded-full block mx-auto my-3 w-full md:w-[45%]"
-				/>
 				{isSignup && (
 					<input
-						type="email"
-						placeholder="Email"
-						name="email"
+						type="text"
+						placeholder="Full Name"
+						name="name"
 						onChange={handleInputChange}
-						className="p-3 focus:outline-none border border-neutral-400 rounded-full block mx-auto my-4 w-full md:w-[45%]"
+						className="p-3 focus:outline-none border border-neutral-400 rounded-full block mx-auto my-3 w-full md:w-[45%]"
 					/>
 				)}
+				<input
+					type="email"
+					placeholder="Email"
+					name="email"
+					onChange={handleInputChange}
+					className="p-3 focus:outline-none border border-neutral-400 rounded-full block mx-auto my-4 w-full md:w-[45%]"
+				/>
+
 				<aside className="relative">
 					<input
 						type={isVisible ? "text" : "password"}

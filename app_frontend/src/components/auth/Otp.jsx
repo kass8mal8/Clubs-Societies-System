@@ -50,7 +50,7 @@ const Otp = ({ email }) => {
 	const [encryptedEmail, setEncryptedEmail] = useState(null);
 
 	useEffect(() => {
-		if (email.length) {
+		if (email?.length) {
 			const stars = Math.max(0, email.length - (email.indexOf("@") + 2)); // Ensure non-negative
 
 			// format of email will be u***30@gmail.com
@@ -78,7 +78,7 @@ const Otp = ({ email }) => {
 						type="text"
 						value={code}
 						maxLength={1}
-						className="w-10 h-10 text-gray-500 rounded border border-gray-300 text-center"
+						className="w-11 h-11 text-gray-500 rounded border border-gray-300 text-center"
 						onChange={(e) => handleChange(index, e.target.value)}
 					/>
 				))}
@@ -87,7 +87,7 @@ const Otp = ({ email }) => {
 			<div className="mt-5  w-full">
 				<button
 					className={`${
-						loading ? "bg-gray-300" : "bg-[#6163EF]"
+						loading ? "bg-gray-300" : "bg-gray-700"
 					} w-full text-white p-3 rounded-lg`}
 					disabled={!isComplete}
 					onClick={handleSubmit}
