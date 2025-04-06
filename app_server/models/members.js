@@ -16,7 +16,7 @@ const memberSchema = new Schema({
 		required: true,
 	},
 	telephone: {
-		type: Number,
+		type: String,
 		required: true,
 		unique: true,
 	},

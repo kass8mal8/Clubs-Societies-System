@@ -14,13 +14,12 @@ const eventSchema = new Schema({
 		required: true,
 	},
 	date: {
-		type: Date,
+		type: String,
 		required: true,
 	},
 	createdBy: {
 		type: Schema.Types.ObjectId,
 		ref: "User",
-		required: true,
 	},
 	guests: {
 		type: [
