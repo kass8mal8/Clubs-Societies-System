@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Header from "./components/navigation/Header";
 import { useState } from "react";
 import SideNav from "./components/navigation/SideNav";
+import Members from "./components/members/members";
 
 function App() {
 	const location = useLocation();
@@ -11,18 +12,18 @@ function App() {
 
 	return (
 		<AuthProvider>
-			<div className="text-slate-700 sm:w-full w-[90%] sm:mx-auto relative bg-gray-50">
-				{location.pathname !== "/auth" && (
-					<>
-						<Header />
-						<SideNav />
-					</>
-				)}
+			{location.pathname !== "/auth" && (
+				<>
+					<Header />
+					<SideNav />
+				</>
+			)}
+			{/* <Members /> */}
 
-				<Routes>
-					<Route path="/auth" element={<Auth />} />
-				</Routes>
-			</div>
+			<Routes>
+				<Route path="/auth" element={<Auth />} />
+				<Route path="/members" element={<Members />} />
+			</Routes>
 		</AuthProvider>
 	);
 }

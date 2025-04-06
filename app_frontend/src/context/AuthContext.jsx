@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 						Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 					},
 				});
-				setUser(res.data?.user);
+				setUser(res?.data);
 			} catch (error) {
 				isAxiosError(error) && console.log(error.message);
 			}

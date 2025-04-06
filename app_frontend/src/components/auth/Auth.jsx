@@ -44,11 +44,8 @@ const Auth = () => {
 		e.preventDefault();
 
 		try {
-			const res = await post(userDetails);
-			setIsOpen(true);
+			await post(userDetails);
 			!isSignup ? setIsOpen(true) : setIsSignup(false);
-
-			console.log(res.data);
 		} catch (error) {
 			console.log(error.message);
 		}

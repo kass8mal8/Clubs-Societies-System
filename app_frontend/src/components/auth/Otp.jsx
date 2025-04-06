@@ -37,13 +37,9 @@ const Otp = ({ email }) => {
 					Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
 				},
 			});
-			setUser(profileRes.data.user);
-			console.log(res);
+			setUser(profileRes?.data);
 			navigate("/");
 		} catch (error) {
-			// if (axios.isAxiosError(error)) {
-
-			// }
 			axios.isAxiosError && console.log(error.message);
 		}
 	};

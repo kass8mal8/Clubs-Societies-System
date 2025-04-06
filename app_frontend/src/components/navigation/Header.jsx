@@ -7,8 +7,9 @@ const Header = () => {
 	const location = useLocation();
 	const path = location.pathname;
 	const { user } = useAuthContext();
+	console.log(user);
 	return (
-		<div className="bg-white w-[82%] p-3 fixed top-0 items-center flex justify-between left-[18%] rounded-bl">
+		<div className="bg-white w-[83%] p-3 fixed top-0 items-center flex justify-between left-[17%] rounded-bl">
 			<h2 className="font-bold text-xl">
 				{path === "/" ? "Dashboard" : path.slice(1)}
 			</h2>
