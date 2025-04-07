@@ -3,14 +3,9 @@ import options from "../../assets/images/options.png";
 import Skeleton from "../Skeleton";
 import axiosInstance from "../../utils/axiosInstance";
 
-const MembersList = ({ members }) => {
+const MembersList = ({ members, setMembers }) => {
 	const [dropdownVisible, setDropdownVisible] = useState(null); // Track which member's dropdown is visible
 	console.log("MembersList", members);
-	const [membersArr, setMembersArr] = useState([]);
-
-	useEffect(() => {
-		setMembersArr(members);
-	}, [members]);
 
 	const handleToggleDropdown = (memberId) => {
 		setDropdownVisible((prev) => (prev === memberId ? null : memberId));
@@ -21,7 +16,7 @@ const MembersList = ({ members }) => {
 			await axiosInstance.patch(`/members/update/${memberId}`, {
 				reg_status: newStatus,
 			});
-			setMembersArr((prevMembers) =>
+			setMembers((prevMembers) =>
 				prevMembers.map(
 					(member) =>
 						member._id === memberId
@@ -37,10 +32,10 @@ const MembersList = ({ members }) => {
 	const handleDelete = async (memberId) => {
 		try {
 			// Delete the member via API
-			await axiosInstance.delete(`/members/${memberId}`);
-
-			// Optionally, refresh the members list or update the UI
-			alert("Member deleted successfully");
+			await axiosInstance.delete(`/members/remove/${memberId}`);
+			setMembers((prevMembers) =>
+				prevMembers.filter((member) => member._id !== memberId)
+			);
 		} catch (error) {
 			console.error("Failed to delete member:", error);
 		}
@@ -48,13 +43,13 @@ const MembersList = ({ members }) => {
 
 	return (
 		<div className="text-slate-600">
-			{!membersArr ? (
+			{!members ? (
 				<Skeleton />
 			) : (
 				<>
-					{membersArr?.length ? (
+					{members?.length ? (
 						<div>
-							{membersArr?.map((member) => (
+							{members?.map((member) => (
 								<ul
 									key={member._id}
 									className="flex justify-between items-center odd:bg-gray-50 members-center border-gray-300 py-2 px-4 relative"

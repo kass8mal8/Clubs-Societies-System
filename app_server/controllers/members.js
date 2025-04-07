@@ -4,7 +4,9 @@ const addMember = async (req, res) => {
 	const { admission_number, name, telephone } = req.body;
 	try {
 		const member = await Member.create({ name, telephone, admission_number });
-		res.status(200).json({ message: `${member.name} created successfully.` });
+		res
+			.status(200)
+			.json({ message: `${member.name} created successfully.`, member });
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
