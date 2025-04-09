@@ -7,7 +7,6 @@ import MembersList from "./MembersList";
 import AddMember from "./AddMember";
 
 const Members = () => {
-	const { user } = useAuthContext();
 	const { data: members } = useFetch(`/members/`, "members");
 	const [isOpen, setIsOpen] = useState(false);
 	const modalRef = useRef();
