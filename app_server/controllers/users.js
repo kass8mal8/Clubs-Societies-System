@@ -78,7 +78,7 @@ const signin = async (req, res) => {
 
 		res.status(200).json({ message: "verify OTP sent to email", generatedOTP });
 	} catch (error) {
-		console.log("Error:", message);
+		console.log("Error:", error.message);
 		res.status(401).json({ message: error.message });
 	}
 };

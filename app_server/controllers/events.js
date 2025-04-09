@@ -24,14 +24,15 @@ const addEvent = async (req, res) => {
 			return axios.post(url, smsData, {
 				headers: {
 					"Content-Type": "application/json",
-					Authorization: `Bearer ${TIARA_CONNECT_API_KEY}`, // Replace with your API key
+					Authorization: `Bearer ${TIARA_CONNECT_API_KEY}`,
 				},
 			});
 		});
-		const response = await Promise.all(smsPromises);
-		// console.log(response);
+		await Promise.all(smsPromises);
 
-		res.status(200).json({ message: `${event.title} created successfully` });
+		res
+			.status(200)
+			.json({ message: `${event.title} created successfully`, event });
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
