@@ -47,24 +47,12 @@ const getEvents = async (req, res) => {
 	}
 };
 
-const getEvent = async (req, res) => {
+const removeEvent = async (req, res) => {
 	const { eventId } = req.params;
 
 	try {
-		const event = await Event.findById(eventId);
-		res.status(200).json(event);
-	} catch (error) {
-		res.status(500).json({ message: error.message });
-	}
-};
-
-const updateEvent = async (req, res) => {
-	const { updateDetails } = req.body;
-	const { eventId } = req.params;
-
-	try {
-		await Event.findByIdAndUpdate(eventId, { updateDetails });
-		res.status(200).json({ message: "Updated successfully" });
+		const event = await Event.findByIdAndDelete(eventId);
+		res.status(200).json({ message: `${event.title} deleted successfully` });
 	} catch (error) {
 		res.status(500).json({ message: error.message });
 	}
@@ -72,7 +60,6 @@ const updateEvent = async (req, res) => {
 
 module.exports = {
 	getEvents,
-	getEvent,
 	addEvent,
-	updateEvent,
+	removeEvent,
 };

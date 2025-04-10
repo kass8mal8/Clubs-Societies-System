@@ -10,7 +10,6 @@ const SideNav = () => {
 	const path = location.pathname.slice(1);
 	const navigate = useNavigate();
 
-	console.log(path.slice(1));
 	return (
 		<div className="bg-white w-[15%] h-[100lvh] fixed top-0 left-0">
 			<ul className="flex flex-col space-y-4 mt-10">

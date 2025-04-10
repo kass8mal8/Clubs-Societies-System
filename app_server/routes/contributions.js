@@ -6,7 +6,7 @@ const {
 } = require("../controllers/contributions");
 const router = new Router();
 
-router.get("/", getContributions);
+router.get("/:userId", getContributions);
 router.post("/add", addContribution);
 router.put("/update/:contributionId", editContribution);
 

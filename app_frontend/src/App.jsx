@@ -6,6 +6,7 @@ import { useState } from "react";
 import SideNav from "./components/navigation/SideNav";
 import Members from "./components/members/members";
 import Events from "./components/events/Events";
+import Contribution from "./components/contributions/Contribution";
 
 function App() {
 	const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
 				<Route path="/auth" element={<Auth />} />
 				<Route path="/members" element={<Members />} />
 				<Route path="/events" element={<Events />} />
+				<Route path="/contributions" element={<Contribution />} />
 			</Routes>
 		</AuthProvider>
 	);

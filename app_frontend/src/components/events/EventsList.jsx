@@ -11,21 +11,6 @@ const EventsList = ({ events, setEvents }) => {
 		setDropdownVisible((prev) => (prev === eventId ? null : eventId));
 	};
 
-	const handleStatusChange = async (eventId, newStatus) => {
-		try {
-			await axiosInstance.patch(`/events/update/${eventId}`, {
-				reg_status: newStatus,
-			});
-			setEvents((prevEvents) =>
-				prevEvents.map((event) =>
-					event._id === eventId ? { ...event, reg_status: newStatus } : event
-				)
-			);
-		} catch (error) {
-			console.error("Failed to update status:", error);
-		}
-	};
-
 	const handleDelete = async (eventId) => {
 		try {
 			await axiosInstance.delete(`/events/remove/${eventId}`);

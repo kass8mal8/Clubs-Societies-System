@@ -5,14 +5,14 @@ const contributionSchema = new Schema({
 		type: Number,
 		required: true,
 	},
-	userId: {
+	createdBy: {
 		type: Schema.Types.ObjectId,
 		ref: "User",
 		required: true,
 	},
-	memberId: {
-		type: Schema.Types.ObjectId,
-		ref: "Member",
+
+	memberName: {
+		type: String,
 		required: true,
 	},
 	month: {
