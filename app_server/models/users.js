@@ -42,8 +42,12 @@ UserSchema.statics.login = async function (email, password) {
 		if (user && bcrypt.compareSync(password, user.password)) {
 			return user;
 		}
-		throw new Error("Incorrect credentials");
+		// Throw a custom error with a status code and message
+		const error = new Error("Incorrect credentials");
+		error.statusCode = 401; // Unauthorized
+		throw error;
 	} catch (error) {
+		// Re-throw the error to be handled by the controller
 		throw error;
 	}
 };

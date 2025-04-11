@@ -78,8 +78,14 @@ const signin = async (req, res) => {
 
 		res.status(200).json({ message: "verify OTP sent to email", generatedOTP });
 	} catch (error) {
-		console.log("Error:", error.message);
-		res.status(401).json({ message: error.message });
+		// Log the full error object for debugging
+		console.error("Error:", error);
+
+		// Use the error's statusCode if available, otherwise default to 500
+		const statusCode = error.statusCode || 500;
+		const message = error.message || "An error occurred during signin";
+
+		res.status(statusCode).json({ message });
 	}
 };
 
