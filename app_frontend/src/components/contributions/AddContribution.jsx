@@ -10,7 +10,7 @@ const AddContribution = ({ setContributions }) => {
 	const [contributionDetails, setContributionDetails] = useState({
 		memberName: "",
 		amount: "",
-		createdBy: user.id,
+		createdBy: user?.id,
 		month: null, // Use a Date object for the month
 	});
 	const [members, setMembers] = useState([]); // State to store the list of members

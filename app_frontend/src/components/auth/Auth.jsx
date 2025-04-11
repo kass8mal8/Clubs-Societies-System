@@ -12,7 +12,7 @@ const Auth = () => {
 	const [isSignup, setIsSignup] = useState(false);
 	const { post, loading } = usePost(`/auth/${isSignup ? "signup" : "signin"}`);
 	const [userDetails, setUserDetails] = useState({
-		admission_number: null,
+		name: "",
 		email: null,
 		password: "",
 	});
@@ -24,30 +24,17 @@ const Auth = () => {
 	const handleInputChange = async (e) => {
 		const { name, value } = e.target;
 		setUserDetails({ ...userDetails, [name]: value });
-
-		if (name === "admission_number" && value) {
-			try {
-				const encodedAdmissionNumber = encodeURIComponent(value);
-				const response = await axiosInstance.get(
-					`/auth/user/${encodedAdmissionNumber}/${null}`
-				);
-				const phone_number = response.data?.user?.[0]?.phone_number;
-				setUserDetails((prevDetails) => ({ ...prevDetails, phone_number }));
-			} catch (error) {
-				console.error("Error fetching user details:", error);
-			}
-		}
 	};
-	// console.log(userDetails);
 
 	const handleAuth = async (e) => {
 		e.preventDefault();
 
 		try {
-			await post(userDetails);
+			const res = await post(userDetails);
+			console.log("Response:", res);
 			!isSignup ? setIsOpen(true) : setIsSignup(false);
 		} catch (error) {
-			console.log(error.message);
+			console.log("Error:", error);
 		}
 	};
 

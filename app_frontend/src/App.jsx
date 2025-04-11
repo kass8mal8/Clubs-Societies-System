@@ -7,6 +7,7 @@ import SideNav from "./components/navigation/SideNav";
 import Members from "./components/members/members";
 import Events from "./components/events/Events";
 import Contribution from "./components/contributions/Contribution";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
 	const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
 			{/* <Members /> */}
 
 			<Routes>
+				<Route path="/" element={<Dashboard />} />
 				<Route path="/auth" element={<Auth />} />
 				<Route path="/members" element={<Members />} />
 				<Route path="/events" element={<Events />} />

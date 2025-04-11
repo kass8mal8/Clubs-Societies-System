@@ -5,7 +5,6 @@ import axiosInstance from "../../utils/axiosInstance";
 
 const MembersList = ({ members, setMembers }) => {
 	const [dropdownVisible, setDropdownVisible] = useState(null); // Track which member's dropdown is visible
-	console.log("MembersList", members);
 
 	const handleToggleDropdown = (memberId) => {
 		setDropdownVisible((prev) => (prev === memberId ? null : memberId));

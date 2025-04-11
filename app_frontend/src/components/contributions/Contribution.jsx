@@ -7,9 +7,8 @@ import AddContribution from "./AddContribution";
 
 const Contribution = () => {
 	const { user } = useAuthContext();
-	const { id: userId } = user && user;
-	const url = `/contributions/${userId}`;
-	const { data } = useFetch(url);
+	const url = `/contributions/${user?.id}`;
+	const { data } = useFetch(url, "contributions");
 	const [contributions, setContributions] = useState([]);
 
 	useEffect(() => {
