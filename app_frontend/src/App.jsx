@@ -8,6 +8,7 @@ import Members from './components/members/members';
 import Events from './components/events/Events';
 import Contribution from './components/contributions/Contribution';
 import Dashboard from './components/dashboard/Dashboard';
+import Reports from './components/Reports';
 
 function App() {
 	const location = useLocation();
@@ -61,6 +62,7 @@ function App() {
 				<Route path="/members" element={<Members />} />
 				<Route path="/events" element={<Events />} />
 				<Route path="/contributions" element={<Contribution />} />
+				<Route path="/reports" element={<Reports />} />
 			</Routes>
 		</AuthProvider>
 	);
